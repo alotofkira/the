@@ -272,17 +272,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070967342736071680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4225e85214527b04886e5c36a86933b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeedMax: 5
-  RotateSpeed: 90
-  AccelerationAmount: 2.5
-  DecelerationAmount: 1.75
-  AccelerationEnabled: 1
-  DecelerationEnabled: 1
+  RotateSpeed: 360
+  AccelerationAmount: 2
+  DecelerationAmount: 1.5
+  AccelerationEnabled: 0
+  DecelerationEnabled: 0
   MoveForwardKey: 119
   TurnRightKey: 100
   TurnLeftKey: 97
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070967342736071680}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d00800752caa2f94d9bc2a7fa76842f2, type: 3}
   m_Name: 
@@ -301,7 +301,7 @@ MonoBehaviour:
   MoveSpeedMax: 2
   RotateSpeed: 180
   RotationEnabled: 1
-  RotateInstantly: 0
+  RotateInstantly: 1
   MoveContinuous: 1
   MoveUpKey: 119
   MoveDownKey: 115
