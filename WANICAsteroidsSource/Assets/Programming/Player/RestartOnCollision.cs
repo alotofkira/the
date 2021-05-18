@@ -57,7 +57,8 @@ public class RestartOnCollision : MonoBehaviour
         {
             if(timer > TimeUntilRestart)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                HighScoreHolder.totalTime = (int)Time.timeSinceLevelLoad;
+                SceneManager.LoadScene("DeathsScene"); // loads death scene instead of restart
             }
 
             if(effectTimer > EffectInterval)

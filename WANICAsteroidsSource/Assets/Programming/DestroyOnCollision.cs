@@ -17,6 +17,7 @@ public class DestroyOnCollision : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        HighScoreHolder.totalKills++; // does the 
         Destroy(gameObject);
     }
 }

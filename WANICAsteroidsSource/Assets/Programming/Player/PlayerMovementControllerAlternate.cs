@@ -44,6 +44,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         mRigidbody = GetComponent<Rigidbody2D>();
         mTransform = GetComponent<Transform>();
         mAudioSource = GetComponent<AudioSource>();
+        HighScoreHolder.totalTime = 0; // covers for restarts
+        HighScoreHolder.totalKills = 0; // covers for restarts
     }
 
     // Update is called once per frame
