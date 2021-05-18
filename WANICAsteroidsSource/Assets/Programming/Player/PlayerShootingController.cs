@@ -17,7 +17,7 @@ public class PlayerShootingController : MonoBehaviour
 {
     public GameObject ProjectilePrefab = null;
     public float ShootDelay = 0.5f;
-    public float ProjectileSpeed = 2.0f;
+    public float ProjectileSpeed = 100.0f;
     public KeyCode ShootKey = KeyCode.Space;
     // If true, adds player move speed to projectile speed
     public bool AddPlayerMoveSpeed = true;

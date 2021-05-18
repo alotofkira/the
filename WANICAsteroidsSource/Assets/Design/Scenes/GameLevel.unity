@@ -271,6 +271,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2070967342736071704, guid: 7e6d99a5ed473aa45961bd9ab56a3dd9,
+        type: 3}
+      propertyPath: ProjectileSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070967342736071704, guid: 7e6d99a5ed473aa45961bd9ab56a3dd9,
+        type: 3}
+      propertyPath: ShootDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2070967342736071705, guid: 7e6d99a5ed473aa45961bd9ab56a3dd9,
         type: 3}
       propertyPath: EffectStartColor.r
