@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 7713413124967821733, guid: a60ac80a04f63e943a1751bba32ade4e,
     type: 3}
-  ShootDelay: 0.1
+  ShootDelay: 0.05
   ProjectileSpeed: 2
   ShootKey: 32
   AddPlayerMoveSpeed: 1

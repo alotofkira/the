@@ -16,7 +16,8 @@ using UnityEngine;
 public class ObjectSpawnManager : MonoBehaviour
 {
     // Public properties
-    public GameObject SpawnedObjectPrefab = null;
+    public GameObject[] SpawnedObjectPrefab = null;
+    public int SpawnedObjectPrefabIndex = 0;
     public float MinObjectSpeed = 0.5f;
     public float MaxObjectSpeed = 1.5f;
 
@@ -79,6 +80,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
         if(numAsteroids == 0)
         {
+            SpawnedObjectPrefabIndex = Random.Range(0, SpawnedObjectPrefab.Length); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
             SpawnNextWave();
         }
     }
@@ -112,7 +114,7 @@ public class ObjectSpawnManager : MonoBehaviour
                 break;
         }
 
-        var spawnScale = SpawnedObjectPrefab.transform.localScale * spawnSize;
+        var spawnScale = SpawnedObjectPrefab[SpawnedObjectPrefabIndex].transform.localScale * spawnSize;
         return spawnScale;
     }
 
@@ -154,8 +156,9 @@ public class ObjectSpawnManager : MonoBehaviour
 
     public void SpawnAtSetPosition(Vector3 position, Vector3 scale)
     {
+        /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
         // Create object
-        var spawnedObject = Instantiate(SpawnedObjectPrefab, position, Quaternion.identity);
+        var spawnedObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
 
         // Set object size
         spawnedObject.transform.localScale = scale;
@@ -165,7 +168,16 @@ public class ObjectSpawnManager : MonoBehaviour
         spawnedObject.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // Random speed
-        var speed = Random.Range(MinObjectSpeed, MaxObjectSpeed);
+        var speed = 0.0f; 
+        switch (SpawnedObjectPrefabIndex)
+        {
+            case 0:
+                speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
+                break;
+            case 1:
+                speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed); // added case for special slime, twice as fast
+                break;
+        }
 
         // Random move direction
         rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
