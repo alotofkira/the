@@ -38,6 +38,9 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Movement
     private Vector2 moveDirection = Vector2.right;
 
+    // Covers for TotalDistance
+    private Vector3 lastPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,11 +49,15 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         mAudioSource = GetComponent<AudioSource>();
         HighScoreHolder.totalTime = 0; // covers for restarts
         HighScoreHolder.totalKills = 0; // covers for restarts
+        HighScoreHolder.totalDistance = 0;
+        lastPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        HighScoreHolder.totalDistance += (int)Vector3.Distance(lastPos, transform.position);
+        lastPos = transform.position;
         Rotate();
         Move();
     }

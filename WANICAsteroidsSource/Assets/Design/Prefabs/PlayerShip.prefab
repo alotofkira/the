@@ -326,5 +326,5 @@ MonoBehaviour:
   EffectMaxDistance: 1
   EffectInterval: 0.5
   EffectScaleMultiplier: 2
-  EffectStartColor: {r: 1, g: 0.7745887, b: 0.109803915, a: 1}
+  EffectStartColor: {r: 0.3443396, g: 1, b: 0.4877711, a: 1}
   ClipVolumeMultiplier: 0.5
