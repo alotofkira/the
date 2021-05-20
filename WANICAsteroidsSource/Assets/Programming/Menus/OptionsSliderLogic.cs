@@ -21,6 +21,7 @@ public enum SliderFunctions
     OverallVolume,
     MusicVolume,
     SFXVolume,
+    Difficulty,
 }
 
 public class OptionsSliderLogic : MonoBehaviour
@@ -58,6 +59,11 @@ public class OptionsSliderLogic : MonoBehaviour
                 sliderAction = SetSFXVolume;
                 mainMixer.GetFloat("SFXVolume", out sliderValue);
                 break;
+            case SliderFunctions.Difficulty:
+                sliderAction = SetDifficulty;
+                mainMixer.GetFloat("Difficulty", out sliderValue);
+                break;
+
         }
 
         // Get slider component and set value
@@ -88,4 +94,9 @@ public class OptionsSliderLogic : MonoBehaviour
     {
         mainMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
     }
+    private void SetDifficulty(float value)
+    {
+        mainMixer.SetFloat("Difficulty", Mathf.Log10(value) * 20);
+    }
+
 }
