@@ -261,8 +261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectilePrefab: {fileID: 7713413124967821733, guid: a60ac80a04f63e943a1751bba32ade4e,
     type: 3}
-  ShootDelay: 0.05
-  ProjectileSpeed: 2
+  ShootDelay: 0.5
+  ProjectileSpeed: 10
   ShootKey: 32
   AddPlayerMoveSpeed: 1
 --- !u!114 &2070967342736071685
@@ -322,9 +322,9 @@ MonoBehaviour:
   TimeUntilRestart: 3
   EffectPrefab: {fileID: 1476684567254845148, guid: 0baa11af58bec284b97d1f91022c3d7f,
     type: 3}
-  ClipToPlay: {fileID: 8300000, guid: d9d46a67ad68d214fa4bd7bf087eaa4c, type: 3}
+  ClipToPlay: {fileID: 8300000, guid: 27213e69514634f78a9042323950de23, type: 3}
   EffectMaxDistance: 1
-  EffectInterval: 0.5
+  EffectInterval: 1
   EffectScaleMultiplier: 2
   EffectStartColor: {r: 0.3443396, g: 1, b: 0.4877711, a: 1}
   ClipVolumeMultiplier: 0.5

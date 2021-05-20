@@ -24,6 +24,22 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Movement continues in last chosen direction
     public bool MoveContinuous = true;
 
+    //sprite renderer that changes based on movement
+    public SpriteRenderer spriteRenderer;
+
+    //sprites for movement
+    public Sprite down;
+    public Sprite up;
+    public Sprite left;
+    public Sprite right;
+    public Sprite upRight;
+    public Sprite upLeft;
+    public Sprite downRight;
+    public Sprite downLeft;
+
+    //vector that returns the player's current position every update
+    public static Vector3 playerPos;
+
     // Input properties
     public KeyCode MoveUpKey = KeyCode.W;
     public KeyCode MoveDownKey = KeyCode.S;
@@ -56,6 +72,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         HighScoreHolder.totalDistance += (int)Vector3.Distance(lastPos, transform.position);
         lastPos = transform.position;
         Rotate();
@@ -75,16 +92,42 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
 
         // Input
         if (Input.GetKey(MoveUpKey))
+        {
             moveDirection.y += 1;
+            if(!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
+            {
+                spriteRenderer.sprite = up;
+            }
+            
+        }
+            
 
         if (Input.GetKey(MoveDownKey))
+        {
             moveDirection.y -= 1;
+            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
+            {
+                spriteRenderer.sprite = down;
+            }
+        }
 
         if (Input.GetKey(MoveRightKey))
+        {
             moveDirection.x += 1;
+            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
+            {
+                spriteRenderer.sprite = right;
+            }
+        }
 
         if (Input.GetKey(MoveLeftKey))
+        {
             moveDirection.x -= 1;
+            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
+            {
+                spriteRenderer.sprite = left;
+            }
+        }
 
         // Movement
         mRigidbody.velocity = moveDirection.normalized * MoveSpeedMax;
