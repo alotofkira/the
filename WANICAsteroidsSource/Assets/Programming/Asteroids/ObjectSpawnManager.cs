@@ -80,7 +80,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
         if(numAsteroids == 0)
         {
-            SpawnedObjectPrefabIndex = Random.Range(0, SpawnedObjectPrefab.Length); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
+           
             SpawnNextWave();
         }
     }
@@ -157,6 +157,7 @@ public class ObjectSpawnManager : MonoBehaviour
     public void SpawnAtSetPosition(Vector3 position, Vector3 scale)
     {
         /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
+        SpawnedObjectPrefabIndex = Random.Range(0, SpawnedObjectPrefab.Length); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
         // Create object
         var spawnedObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
 
@@ -173,9 +174,14 @@ public class ObjectSpawnManager : MonoBehaviour
         {
             case 0:
                 speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
+
                 break;
             case 1:
                 speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed); // added case for special slime, twice as fast
+                break;
+            case 2:
+                speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
+
                 break;
         }
 
