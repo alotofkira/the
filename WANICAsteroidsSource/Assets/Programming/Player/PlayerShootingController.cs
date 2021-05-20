@@ -17,7 +17,7 @@ public class PlayerShootingController : MonoBehaviour
 {
     public GameObject ProjectilePrefab = null;
     public float ShootDelay = 0.5f;
-    public float ProjectileSpeed = 100.0f;
+    public float ProjectileSpeed = 10.0f;
     public KeyCode ShootKey = KeyCode.Space;
     // If true, adds player move speed to projectile speed
     public bool AddPlayerMoveSpeed = true;
@@ -37,6 +37,8 @@ public class PlayerShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ProjectileSpeed = 10.0f * OptionsSliderLogic.modBullet;
+        ShootDelay = 0.5f * OptionsSliderLogic.modReload;
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
         {
             SpawnProjectile();

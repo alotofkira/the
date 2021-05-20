@@ -15,7 +15,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-
 public enum SliderFunctions
 {
     OverallVolume,
@@ -23,9 +22,16 @@ public enum SliderFunctions
     SFXVolume,
     Difficulty,
 }
-
+// 
 public class OptionsSliderLogic : MonoBehaviour
 {
+    // static delegation for adjusting gameplay difficulty
+    public static float modSpeed = 1f; // player speed
+    public static float modReload = 1f; // gun reload
+    public static float modBullet = 1f; // proj speed
+
+
+
     // Options for what to do when button is clicked
     public SliderFunctions sliderFunction;
 
@@ -61,9 +67,7 @@ public class OptionsSliderLogic : MonoBehaviour
                 break;
             case SliderFunctions.Difficulty:
                 sliderAction = SetDifficulty;
-                mainMixer.GetFloat("Difficulty", out sliderValue);
                 break;
-
         }
 
         // Get slider component and set value
@@ -96,7 +100,9 @@ public class OptionsSliderLogic : MonoBehaviour
     }
     private void SetDifficulty(float value)
     {
-        mainMixer.SetFloat("Difficulty", Mathf.Log10(value) * 20);
+        modSpeed = modBullet = 10/value;
+        modReload = value;
+        Debug.Log(modSpeed + " " + modReload);
     }
 
 }
