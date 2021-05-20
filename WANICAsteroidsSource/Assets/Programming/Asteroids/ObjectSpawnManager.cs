@@ -173,9 +173,14 @@ public class ObjectSpawnManager : MonoBehaviour
         {
             case 0:
                 speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
+
                 break;
             case 1:
                 speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed); // added case for special slime, twice as fast
+                break;
+            case 2:
+                speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
+
                 break;
         }
 
