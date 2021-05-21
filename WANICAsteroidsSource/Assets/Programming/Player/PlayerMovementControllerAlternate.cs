@@ -32,10 +32,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     public Sprite up;
     public Sprite left;
     public Sprite right;
-    public Sprite upRight;
-    public Sprite upLeft;
-    public Sprite downRight;
-    public Sprite downLeft;
 
     //vector that returns the player's current position every update
     public static Vector3 playerPos;
