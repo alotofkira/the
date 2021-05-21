@@ -41,6 +41,7 @@ public class ObjectSpawnManager : MonoBehaviour
     private float cameraMinY;
     private float cameraMaxY;
 
+
     private enum SpawnCorner
     {
         UpperLeft,
@@ -158,8 +159,10 @@ public class ObjectSpawnManager : MonoBehaviour
     {
         /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
         SpawnedObjectPrefabIndex = Random.Range(0, SpawnedObjectPrefab.Length); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
+
         // Create object
         var spawnedObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
+        spawnedObject.GetComponent<SpawnObjectsWhenDestroyed>().Index = SpawnedObjectPrefabIndex;
 
         // Set object size
         spawnedObject.transform.localScale = scale;
@@ -168,26 +171,33 @@ public class ObjectSpawnManager : MonoBehaviour
         var rotation = Random.Range(0.0f, 360.0f);
         spawnedObject.transform.eulerAngles = new Vector3(0, 0, rotation);
 
+        // Random move direction
+        rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
+        var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
+
         // Random speed
         var speed = 0.0f; 
         switch (SpawnedObjectPrefabIndex)
         {
             case 0:
                 speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
-
+                spawnedObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
                 break;
             case 1:
                 speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed); // added case for special slime, twice as fast
+                spawnedObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
                 break;
             case 2:
                 speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
-
+                direction = (PlayerMovementControllerAlternate.playerPos - transform.position).normalized;
+                spawnedObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+                break;
+            case 3:
+                speed = 0.5f;
+                spawnedObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
                 break;
         }
 
-        // Random move direction
-        rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
-        var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
 
         // Move object
         var body = spawnedObject.GetComponent<Rigidbody2D>();
