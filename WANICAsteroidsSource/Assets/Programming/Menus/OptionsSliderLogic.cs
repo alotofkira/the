@@ -100,7 +100,7 @@ public class OptionsSliderLogic : MonoBehaviour
     }
     private void SetDifficulty(float value)
     {
-        modSpeed = modBullet = 10/value;
+        modSpeed = modBullet = 10.0f/value;
         modReload = value;
         Debug.Log(modSpeed + " " + modReload);
     }

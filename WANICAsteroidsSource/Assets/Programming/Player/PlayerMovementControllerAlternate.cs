@@ -24,9 +24,9 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Movement continues in last chosen direction
     public bool MoveContinuous = true;
 
-    //sprite renderer that changes based on movement
+    //sprite renderer & animation that changes based on movement
     public SpriteRenderer spriteRenderer;
-
+    private Animator animator;
     //sprites for movement
     public Sprite down;
     public Sprite up;
@@ -59,6 +59,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         mRigidbody = GetComponent<Rigidbody2D>();
         mTransform = GetComponent<Transform>();
         mAudioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         HighScoreHolder.totalTime = 0; // covers for restarts
         HighScoreHolder.totalKills = 0; // covers for restarts
         HighScoreHolder.totalDistance = 0;
@@ -85,15 +87,17 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         if(Input.GetKey(MoveUpKey) || Input.GetKey(MoveDownKey) || Input.GetKey(MoveRightKey) || Input.GetKey(MoveLeftKey))
         {
             moveDirection = Vector2.zero;
+            //animator.SetInteger("state", 0);
         }
 
         // Input
         if (Input.GetKey(MoveUpKey))
         {
             moveDirection.y += 1;
-            if(!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
+            animator.SetInteger("state", 2);
+            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
             {
-                spriteRenderer.sprite = up;
+
             }
             
         }
@@ -101,28 +105,32 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
 
         if (Input.GetKey(MoveDownKey))
         {
+
             moveDirection.y -= 1;
+            animator.SetInteger("state", 1);
             if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
             {
-                spriteRenderer.sprite = down;
+
             }
         }
 
         if (Input.GetKey(MoveRightKey))
         {
             moveDirection.x += 1;
+            animator.SetInteger("state", 2);
             if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
             {
-                spriteRenderer.sprite = right;
+
             }
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
             moveDirection.x -= 1;
+            animator.SetInteger("state", 1);
             if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
             {
-                spriteRenderer.sprite = left;
+
             }
         }
 
