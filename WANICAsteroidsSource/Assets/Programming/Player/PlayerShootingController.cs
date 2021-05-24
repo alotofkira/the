@@ -25,6 +25,10 @@ public class PlayerShootingController : MonoBehaviour
     private float shootTimer = 0.0f;
     private Transform mTransform = null;
     private Rigidbody2D mRigidbody = null;
+    private Vector3 playerPos;
+    private Vector3 spawnPos;
+
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,14 @@ public class PlayerShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player != null)
+        {
+            playerPos = new Vector3(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y, player.GetComponent<Transform>().position.z);
+        }
+       
+
+        player = GameObject.Find("PlayerShip");
+
         ProjectileSpeed = OptionsSliderLogic.modBullet;
         ShootDelay = 0.5f * OptionsSliderLogic.modReload;
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
@@ -50,7 +62,35 @@ public class PlayerShootingController : MonoBehaviour
 
     void SpawnProjectile()
     {
-        var spawnPosition = mTransform.position;
+        if(player != null)
+        {
+            Vector3 rotation = new Vector3(0, 0, 0);
+            if(player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 0)
+            {
+                spawnPos = new Vector3(playerPos.x + 1, playerPos.y, playerPos.z);
+                rotation = new Vector3(0, 0, 90);
+            }
+            else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 1)
+            {
+                spawnPos = new Vector3(playerPos.x - 1, playerPos.y, playerPos.z);
+                rotation = new Vector3(0, 0, -90);
+            }
+            else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 2)
+            {
+                spawnPos = new Vector3(playerPos.x, playerPos.y + 1, playerPos.z);
+            }
+            else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 3)
+            {
+                spawnPos = new Vector3(playerPos.x, playerPos.y - 1, playerPos.z);
+                rotation = new Vector3(0, 0, 180);
+            }
+            var projectile = GameObject.Instantiate(ProjectilePrefab, spawnPos, Quaternion.identity);
+            projectile.transform.eulerAngles = rotation;
+            var direction = new Vector3(rotation.x, rotation.y, 0.0f);
+            projectile.GetComponent<Rigidbody2D>().velocity = direction * ProjectileSpeed;
+        }
+
+        /*var spawnPosition = mTransform.position;
         // Nudge slightly ahead of ship
         var rotation = mTransform.eulerAngles.z * Mathf.Deg2Rad;
         var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0.0f);
@@ -64,6 +104,6 @@ public class PlayerShootingController : MonoBehaviour
         var body = projectile.GetComponent<Rigidbody2D>();
         body.velocity = direction * ProjectileSpeed;
         if (AddPlayerMoveSpeed)
-            body.velocity += mRigidbody.velocity;
+            body.velocity += mRigidbody.velocity;*/
     }
 }

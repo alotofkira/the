@@ -33,6 +33,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     public Sprite left;
     public Sprite right;
 
+    public int spriteNum = 1;
+
     //vector that returns the player's current position every update
     public static Vector3 playerPos;
 
@@ -91,39 +93,30 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         if (Input.GetKey(MoveUpKey))
         {
             moveDirection.y += 1;
-            if(!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-                spriteRenderer.sprite = up;
-            }
-            
+            spriteRenderer.sprite = up;
+            spriteNum = 0;
         }
             
 
         if (Input.GetKey(MoveDownKey))
         {
             moveDirection.y -= 1;
-            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-                spriteRenderer.sprite = down;
-            }
+            spriteRenderer.sprite = down;
+            spriteNum = 1;
         }
 
         if (Input.GetKey(MoveRightKey))
         {
             moveDirection.x += 1;
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-                spriteRenderer.sprite = right;
-            }
+            spriteRenderer.sprite = right;
+            spriteNum = 2;
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
             moveDirection.x -= 1;
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-                spriteRenderer.sprite = left;
-            }
+            spriteRenderer.sprite = left;
+            spriteNum = 3;
         }
 
         // Movement
