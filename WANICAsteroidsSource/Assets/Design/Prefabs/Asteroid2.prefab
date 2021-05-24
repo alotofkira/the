@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinObjectsToSpawn: 2
   MaxObjectsToSpawn: 3
+  Index: 0
   SizeThresholdForSpawning: 0.7
 --- !u!114 &2378089194843842255
 MonoBehaviour:
@@ -177,8 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectPrefab: {fileID: 1476684567254845148, guid: 0baa11af58bec284b97d1f91022c3d7f,
     type: 3}
-  ClipToPlay: {fileID: 8300000, guid: c79e504c140abd74799f43135491e7a6, type: 3}
+  ClipToPlay: {fileID: 8300000, guid: 7732951d03126490a817572d1e6ca7e9, type: 3}
   ScaleEffectFromSource: 1
   BaseScaleMultiplier: 1
   StartColor: {r: 0.9913361, g: 1, b: 0.8352941, a: 1}
-  ClipVolumeMultiplier: 1
+  ClipVolumeMultiplier: 0.5
