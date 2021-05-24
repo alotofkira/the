@@ -204,6 +204,36 @@ public class ObjectSpawnManager : MonoBehaviour
         body.velocity = direction * speed;
     }
 
+    public void SpawnSplit(Vector3 position, Vector3 scale)
+    {
+        /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
+        SpawnedObjectPrefabIndex = 1;
+
+        // Create object
+        var splitObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
+        splitObject.GetComponent<SpawnObjectsWhenDestroyed>().Index = SpawnedObjectPrefabIndex;
+
+        // Set object size
+        splitObject.transform.localScale = scale;
+
+        // Random rotation
+        var rotation = Random.Range(0.0f, 360.0f);
+        splitObject.transform.eulerAngles = new Vector3(0, 0, rotation);
+
+        // Random move direction
+        rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
+        var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
+
+        // Random speed
+        var speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed);
+        splitObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+
+
+        // Move object
+        var body = splitObject.GetComponent<Rigidbody2D>();
+        body.velocity = direction * speed;
+    }
+
     void SpawnNextWave()
     {
         for(var i = 0; i < currentWaveSize; ++i)
