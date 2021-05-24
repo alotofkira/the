@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: be3911b8b1682434e80f5ed49be30541, type: 3}
-  m_Color: {r: 0.16745283, g: 0.35159975, b: 0.6698113, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -300,14 +300,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeedMax: 2
   RotateSpeed: 180
-  RotationEnabled: 1
-  RotateInstantly: 1
-  MoveContinuous: 1
+  RotationEnabled: 0
+  RotateInstantly: 0
+  MoveContinuous: 0
   spriteRenderer: {fileID: 2070967342736071681}
   down: {fileID: 21300000, guid: 82e416b91655cf44ead648ceee97fc2c, type: 3}
   up: {fileID: 21300000, guid: 4058383cbd6399c4a84550a137425f52, type: 3}
-  left: {fileID: 21300000, guid: 445652bd6298f074ca234b987b6cc9e3, type: 3}
-  right: {fileID: 21300000, guid: d9c40d3676ab59942993b875e203d085, type: 3}
+  left: {fileID: 21300000, guid: edbaa7a828283054abd41cfd3754c5cf, type: 3}
+  right: {fileID: 21300000, guid: 95070dc43ca7f94478a1d7f8300720bb, type: 3}
   MoveUpKey: 119
   MoveDownKey: 115
   MoveRightKey: 100
