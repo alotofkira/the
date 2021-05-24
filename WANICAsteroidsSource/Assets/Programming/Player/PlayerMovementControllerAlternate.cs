@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	PlayerMovementControllerAlternate.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & Liam Binford (liam.binford)
 // Project:		Asteroids
 // Course:		WANIC VGP
 //
@@ -69,7 +69,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     void Update()
     {
         playerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        HighScoreHolder.totalDistance += (int)Vector3.Distance(lastPos, transform.position);
+        HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
+        Debug.Log(HighScoreHolder.totalDistance);
         lastPos = transform.position;
         Rotate();
         Move();

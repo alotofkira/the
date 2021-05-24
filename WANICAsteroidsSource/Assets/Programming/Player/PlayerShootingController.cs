@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	PlayerShootingController.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & Alex Dzius (alex.dzius)
 // Project:		Asteroids
 // Course:		WANIC VGP
 //
@@ -29,7 +29,7 @@ public class PlayerShootingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shootTimer = ShootDelay;
+        shootTimer = ShootDelay * OptionsSliderLogic.modReload;
         mTransform = GetComponent<Transform>();
         mRigidbody = GetComponent<Rigidbody2D>();
     }
@@ -37,7 +37,7 @@ public class PlayerShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProjectileSpeed = 10.0f * OptionsSliderLogic.modBullet;
+        ProjectileSpeed = OptionsSliderLogic.modBullet;
         ShootDelay = 0.5f * OptionsSliderLogic.modReload;
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
         {

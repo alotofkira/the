@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	RestartOnCollision.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & Alex Dzius (alex.dzius)
 // Project:		Asteroids
 // Course:		WANIC VGP
 //
