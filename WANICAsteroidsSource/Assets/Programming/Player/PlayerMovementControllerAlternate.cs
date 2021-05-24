@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //
 // File Name:	PlayerMovementControllerAlternate.cs
 // Author(s):	Jeremy Kings (j.kings) & Liam Binford (liam.binford)
@@ -103,7 +103,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             {
 
             }
-            
         }
             
 
