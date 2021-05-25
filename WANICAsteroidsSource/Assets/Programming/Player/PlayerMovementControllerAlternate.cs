@@ -24,6 +24,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Movement continues in last chosen direction
     public bool MoveContinuous = true;
 
+    public float moveSpeed = 1;
+
     //sprite renderer & animation that changes based on movement
     public SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -95,7 +97,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         // Input
         if (Input.GetKey(MoveUpKey))
         {
-            moveDirection.y += 1;
+            moveDirection.y += moveSpeed;
             spriteNum = 0;
             animator.SetInteger("state", 2);
         }
@@ -103,21 +105,21 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
 
         if (Input.GetKey(MoveDownKey))
         {
-            moveDirection.y -= 1;
+            moveDirection.y -= moveSpeed;
             spriteNum = 1;
             animator.SetInteger("state", 1);
         }
 
         if (Input.GetKey(MoveRightKey))
         {
-            moveDirection.x += 1;
+            moveDirection.x += moveSpeed;
             spriteNum = 2;
             animator.SetInteger("state", 2);
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
-            moveDirection.x -= 1;
+            moveDirection.x -= moveSpeed;
             spriteNum = 3;
             animator.SetInteger("state", 1);
         }
