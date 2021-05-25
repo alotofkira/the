@@ -76,7 +76,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     {
         playerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
-        Debug.Log(HighScoreHolder.totalDistance);
         lastPos = transform.position;
         Rotate();
         Move();
@@ -97,30 +96,30 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         // Input
         if (Input.GetKey(MoveUpKey))
         {
-            moveDirection.y += moveSpeed;
             spriteNum = 0;
+            moveDirection.y += moveSpeed;
             animator.SetInteger("state", 2);
         }
             
 
         if (Input.GetKey(MoveDownKey))
         {
-            moveDirection.y -= moveSpeed;
             spriteNum = 1;
+            moveDirection.y -= moveSpeed;
             animator.SetInteger("state", 1);
         }
 
         if (Input.GetKey(MoveRightKey))
         {
-            moveDirection.x += moveSpeed;
             spriteNum = 2;
+            moveDirection.x += moveSpeed;
             animator.SetInteger("state", 2);
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
-            moveDirection.x -= moveSpeed;
             spriteNum = 3;
+            moveDirection.x -= moveSpeed;
             animator.SetInteger("state", 1);
         }
 
@@ -193,9 +192,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             // Always turn right
             turnDirection = -1;
         }
-
-        Debug.Log(rightDotTarget);
-        Debug.Log(turnDirection);
         return turnDirection;
     }
 
