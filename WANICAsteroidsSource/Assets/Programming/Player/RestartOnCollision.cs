@@ -34,7 +34,8 @@ public class RestartOnCollision : MonoBehaviour
     PlayerShootingController shooting = null;
     Transform mTransform = null;
     AudioSource mAudioSource = null;
-
+    Animator animator = null;
+    SpriteRenderer sp = null;
     // Misc
     private bool hasCollided = false;
     private float timer = 0.0f;
@@ -48,6 +49,8 @@ public class RestartOnCollision : MonoBehaviour
         shooting = GetComponent<PlayerShootingController>();
         mTransform = GetComponent<Transform>();
         mAudioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -55,7 +58,10 @@ public class RestartOnCollision : MonoBehaviour
     {
         if(hasCollided)
         {
-            if(timer > TimeUntilRestart)
+            animator.SetInteger("state", 0);
+            sp.color = Color.green;
+            alternateMovement.mRigidbody.velocity = Vector2.zero;
+            if (timer > TimeUntilRestart)
             {
                 HighScoreHolder.totalTime = (int)Time.timeSinceLevelLoad;
                 SceneManager.LoadScene("DeathsScene"); // loads death scene instead of restart

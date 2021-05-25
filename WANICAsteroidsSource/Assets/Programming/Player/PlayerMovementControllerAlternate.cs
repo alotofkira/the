@@ -47,7 +47,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     public KeyCode MoveLeftKey = KeyCode.A;
 
     // Components
-    private Rigidbody2D mRigidbody = null;
+    public Rigidbody2D mRigidbody = null;
     private Transform mTransform = null;
     private AudioSource mAudioSource = null;
 
@@ -77,6 +77,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         playerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
         lastPos = transform.position;
+        moveSpeed = (float)OptionsSliderLogic.modSpeed / 10.0f;
+        Debug.Log("speed + " + moveSpeed);
         Rotate();
         Move();
     }
