@@ -49,7 +49,7 @@ public class PlayerShootingController : MonoBehaviour
 
         player = GameObject.Find("PlayerShip");
 
-        ProjectileSpeed = OptionsSliderLogic.modBullet;
+        ProjectileSpeed = 10 * OptionsSliderLogic.modBullet;
         ShootDelay = 0.5f * OptionsSliderLogic.modReload;
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
         {

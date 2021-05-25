@@ -78,7 +78,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
         lastPos = transform.position;
         moveSpeed = (float)OptionsSliderLogic.modSpeed / 10.0f;
-        Debug.Log("speed + " + moveSpeed);
         Rotate();
         Move();
     }
