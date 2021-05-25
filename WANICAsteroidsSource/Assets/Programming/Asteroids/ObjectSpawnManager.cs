@@ -81,7 +81,6 @@ public class ObjectSpawnManager : MonoBehaviour
 
         if(numAsteroids == 0)
         {
-           
             SpawnNextWave();
         }
     }
