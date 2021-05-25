@@ -47,7 +47,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     public KeyCode MoveLeftKey = KeyCode.A;
 
     // Components
-    private Rigidbody2D mRigidbody = null;
+    public Rigidbody2D mRigidbody = null;
     private Transform mTransform = null;
     private AudioSource mAudioSource = null;
 

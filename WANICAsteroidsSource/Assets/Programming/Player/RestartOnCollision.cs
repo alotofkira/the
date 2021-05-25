@@ -46,7 +46,6 @@ public class RestartOnCollision : MonoBehaviour
     {
         movement = GetComponent<PlayerMovementController>();
         alternateMovement = GetComponent<PlayerMovementControllerAlternate>();
-        alternateMovement.moveSpeed /= 10.0f;
         shooting = GetComponent<PlayerShootingController>();
         mTransform = GetComponent<Transform>();
         mAudioSource = GetComponent<AudioSource>();
@@ -61,6 +60,7 @@ public class RestartOnCollision : MonoBehaviour
         {
             animator.SetInteger("state", 0);
             sp.color = Color.green;
+            alternateMovement.mRigidbody.velocity = Vector2.zero;
             if (timer > TimeUntilRestart)
             {
                 HighScoreHolder.totalTime = (int)Time.timeSinceLevelLoad;
