@@ -27,6 +27,8 @@ public class SpawnObjectsWhenDestroyed : MonoBehaviour
 
     // Components
     private Transform mTransform = null;
+    private Vector3 splitPosition;
+    private Vector3 splitScale;
 
     // Other objects
     private ObjectSpawnManager spawnManager = null;
@@ -35,6 +37,7 @@ public class SpawnObjectsWhenDestroyed : MonoBehaviour
     void Start()
     {
         mTransform = GetComponent<Transform>();
+        splitScale = new Vector3(0.5f, 0.5f, 0.5f);
         spawnManager = FindObjectOfType<ObjectSpawnManager>();
     }
 
@@ -60,7 +63,8 @@ public class SpawnObjectsWhenDestroyed : MonoBehaviour
                 break;
 
             case 1:
-                spawnManager.SpawnAtSetPosition(mTransform);
+                splitPosition = GetComponent<Transform>().position;
+                spawnManager.SpawnSplit(splitPosition + new Vector3(0, 0, 0), splitScale);
                 break;
 
             case 2:
