@@ -98,51 +98,30 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         if (Input.GetKey(MoveUpKey))
         {
             moveDirection.y += moveSpeed;
-            spriteRenderer.sprite = up;
             spriteNum = 0;
             animator.SetInteger("state", 2);
-            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-
-            }
         }
             
 
         if (Input.GetKey(MoveDownKey))
         {
-
             moveDirection.y -= moveSpeed;
-            spriteRenderer.sprite = down;
             spriteNum = 1;
             animator.SetInteger("state", 1);
-            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-
-            }
         }
 
         if (Input.GetKey(MoveRightKey))
         {
             moveDirection.x += moveSpeed;
-            spriteRenderer.sprite = right;
             spriteNum = 2;
             animator.SetInteger("state", 2);
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-
-            }
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
             moveDirection.x -= moveSpeed;
-            spriteRenderer.sprite = left;
             spriteNum = 3;
             animator.SetInteger("state", 1);
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-
-            }
         }
 
         // Movement
