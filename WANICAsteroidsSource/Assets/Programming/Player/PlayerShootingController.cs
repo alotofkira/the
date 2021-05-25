@@ -49,7 +49,7 @@ public class PlayerShootingController : MonoBehaviour
 
         player = GameObject.Find("PlayerShip");
 
-        ProjectileSpeed = OptionsSliderLogic.modBullet;
+        ProjectileSpeed = 10 * OptionsSliderLogic.modBullet;
         ShootDelay = 0.5f * OptionsSliderLogic.modReload;
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
         {
@@ -64,29 +64,29 @@ public class PlayerShootingController : MonoBehaviour
     {
         if(player != null)
         {
-            Vector3 rotation = new Vector3(0, 0, 0);
+            Vector3 rotation = new Vector3(0.0f, 0.0f, 0.0f);
             if(player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 0)
             {
-                spawnPos = new Vector3(playerPos.x + 1, playerPos.y, playerPos.z);
-                rotation = new Vector3(0, 0, 90);
+                spawnPos = new Vector3(playerPos.x, playerPos.y + 0.5f, playerPos.z);
+                rotation = new Vector3(0.0f, 0.0f, 90.0f);
             }
             else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 1)
             {
-                spawnPos = new Vector3(playerPos.x - 1, playerPos.y, playerPos.z);
-                rotation = new Vector3(0, 0, -90);
+                spawnPos = new Vector3(playerPos.x, playerPos.y - 0.5f, playerPos.z);
+                rotation = new Vector3(0.0f, 0.0f, -90.0f);
             }
             else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 2)
             {
-                spawnPos = new Vector3(playerPos.x, playerPos.y + 1, playerPos.z);
+                spawnPos = new Vector3(playerPos.x + 0.5f, playerPos.y, playerPos.z);
             }
             else if (player.GetComponent<PlayerMovementControllerAlternate>().spriteNum == 3)
             {
-                spawnPos = new Vector3(playerPos.x, playerPos.y - 1, playerPos.z);
-                rotation = new Vector3(0, 0, 180);
+                spawnPos = new Vector3(playerPos.x - 0.5f, playerPos.y, playerPos.z);
+                rotation = new Vector3(0.0f, 0.0f, 180.0f);
             }
             var projectile = GameObject.Instantiate(ProjectilePrefab, spawnPos, Quaternion.identity);
             projectile.transform.eulerAngles = rotation;
-            var direction = new Vector3(rotation.x, rotation.y, 0.0f);
+            var direction = new Vector3(Mathf.Cos(rotation.z * Mathf.Deg2Rad), Mathf.Sin(rotation.z * Mathf.Deg2Rad), 0.0f);
             projectile.GetComponent<Rigidbody2D>().velocity = direction * ProjectileSpeed;
         }
 

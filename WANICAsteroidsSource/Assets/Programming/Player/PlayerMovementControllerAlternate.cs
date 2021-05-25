@@ -24,6 +24,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Movement continues in last chosen direction
     public bool MoveContinuous = true;
 
+    public float moveSpeed = 1;
+
     //sprite renderer & animation that changes based on movement
     public SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -45,7 +47,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     public KeyCode MoveLeftKey = KeyCode.A;
 
     // Components
-    private Rigidbody2D mRigidbody = null;
+    public Rigidbody2D mRigidbody = null;
     private Transform mTransform = null;
     private AudioSource mAudioSource = null;
 
@@ -74,8 +76,8 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     {
         playerPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
-        Debug.Log(HighScoreHolder.totalDistance);
         lastPos = transform.position;
+        moveSpeed = (float)OptionsSliderLogic.modSpeed / 10.0f;
         Rotate();
         Move();
     }
@@ -95,52 +97,31 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         // Input
         if (Input.GetKey(MoveUpKey))
         {
-            moveDirection.y += 1;
-            spriteRenderer.sprite = up;
             spriteNum = 0;
+            moveDirection.y += moveSpeed;
             animator.SetInteger("state", 2);
-            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-
-            }
         }
             
 
         if (Input.GetKey(MoveDownKey))
         {
-
-            moveDirection.y -= 1;
-            spriteRenderer.sprite = down;
             spriteNum = 1;
+            moveDirection.y -= moveSpeed;
             animator.SetInteger("state", 1);
-            if (!Input.GetKey(MoveLeftKey) && !Input.GetKey(MoveRightKey))
-            {
-
-            }
         }
 
         if (Input.GetKey(MoveRightKey))
         {
-            moveDirection.x += 1;
-            spriteRenderer.sprite = right;
             spriteNum = 2;
+            moveDirection.x += moveSpeed;
             animator.SetInteger("state", 2);
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-
-            }
         }
 
         if (Input.GetKey(MoveLeftKey))
         {
-            moveDirection.x -= 1;
-            spriteRenderer.sprite = left;
             spriteNum = 3;
+            moveDirection.x -= moveSpeed;
             animator.SetInteger("state", 1);
-            if (!Input.GetKey(MoveUpKey) && !Input.GetKey(MoveDownKey))
-            {
-
-            }
         }
 
         // Movement
@@ -212,9 +193,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             // Always turn right
             turnDirection = -1;
         }
-
-        Debug.Log(rightDotTarget);
-        Debug.Log(turnDirection);
         return turnDirection;
     }
 
