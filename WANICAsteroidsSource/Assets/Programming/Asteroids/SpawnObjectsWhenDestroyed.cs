@@ -74,7 +74,8 @@ public class SpawnObjectsWhenDestroyed : MonoBehaviour
             //split
             case 3:
                 splitPosition = GetComponent<Transform>().position;
-                spawnManager.SpawnSplit(splitPosition + new Vector3(0, 0, 0), splitScale);
+                spawnManager.SpawnSplit(splitPosition - new Vector3(1, 0, 0), splitScale);
+                spawnManager.SpawnSplit(splitPosition + new Vector3(1, 0, 0), splitScale);
                 break;
 
         }
