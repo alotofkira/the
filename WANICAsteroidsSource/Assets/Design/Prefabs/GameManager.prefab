@@ -48,6 +48,8 @@ MonoBehaviour:
   SpawnedObjectPrefab:
   - {fileID: 6046975222712969571, guid: 53da95e33d50ea14aa0ad3f5d395b486, type: 3}
   - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
+  - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
+  - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
   SpawnedObjectPrefabIndex: 0
   MinObjectSpeed: 0.7
   MaxObjectSpeed: 1.5
