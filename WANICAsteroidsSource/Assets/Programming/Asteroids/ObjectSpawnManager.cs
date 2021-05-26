@@ -213,7 +213,7 @@ public class ObjectSpawnManager : MonoBehaviour
         body.velocity = direction * speed;
     }
 
-    public void SpawnSplit(Vector3 position, Vector3 scale)
+    public void SpawnSplit(Vector3 position, Vector3 scale, int splittype)
     {
         /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
         SpawnedObjectPrefabIndex = 1;
@@ -235,9 +235,21 @@ public class ObjectSpawnManager : MonoBehaviour
         rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
         var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
 
+        switch (splittype)
+        {
+            case 0:
+                direction = new Vector3(Player.transform.position.x - splitObject.transform.position.x,
+            Player.transform.position.y - splitObject.transform.position.y);
+                splitObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+                break;
+
+            case 1:
+                splitObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
+                break;
+        }
+
         // Random speed
         var speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed);
-        splitObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
 
 
         // Move object
