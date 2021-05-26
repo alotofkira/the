@@ -29,7 +29,6 @@ public class RestartOnCollision : MonoBehaviour
     public float ClipVolumeMultiplier = 0.5f;
 
     // Components
-    PlayerMovementController movement = null;
     PlayerMovementControllerAlternate alternateMovement = null;
     PlayerShootingController shooting = null;
     Transform mTransform = null;
@@ -44,7 +43,6 @@ public class RestartOnCollision : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        movement = GetComponent<PlayerMovementController>();
         alternateMovement = GetComponent<PlayerMovementControllerAlternate>();
         shooting = GetComponent<PlayerShootingController>();
         mTransform = GetComponent<Transform>();
@@ -115,10 +113,6 @@ public class RestartOnCollision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hasCollided = true;
-
-        // Disable player controls
-        if (movement != null)
-            movement.enabled = false;
 
         if (alternateMovement != null)
             alternateMovement.enabled = false;

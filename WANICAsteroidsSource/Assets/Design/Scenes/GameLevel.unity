@@ -875,7 +875,8 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[44].y
       value: -0.35
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2070967342736071685, guid: 7e6d99a5ed473aa45961bd9ab56a3dd9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e6d99a5ed473aa45961bd9ab56a3dd9, type: 3}
 --- !u!1001 &6290884505194843334
 PrefabInstance:

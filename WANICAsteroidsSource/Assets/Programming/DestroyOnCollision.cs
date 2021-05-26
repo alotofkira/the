@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	DestroyOnCollision.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & Alex Dzius (alex.dzius)
 // Project:		Asteroids
 // Course:		WANIC VGP
 //
@@ -17,7 +17,7 @@ public class DestroyOnCollision : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        HighScoreHolder.totalKills++; // does the 
+        HighScoreHolder.totalKills++; 
         Destroy(gameObject);
     }
 }

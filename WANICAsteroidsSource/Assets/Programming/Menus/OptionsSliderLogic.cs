@@ -30,8 +30,6 @@ public class OptionsSliderLogic : MonoBehaviour
     public static float modReload = 1f; // gun reload
     public static float modBullet = 1f; // proj speed
 
-
-
     // Options for what to do when button is clicked
     public SliderFunctions sliderFunction;
 
@@ -81,7 +79,6 @@ public class OptionsSliderLogic : MonoBehaviour
     {
         sliderAction(slider.value);
     }
-
     // Wondering why the weird formula for changing the volume?
     // Source: https://gamedevbeginner.com/the-right-way-to-make-a-volume-slider-in-unity-using-logarithmic-conversion/
     private void SetOverallVolume(float value)
@@ -102,7 +99,6 @@ public class OptionsSliderLogic : MonoBehaviour
     {
         modSpeed = modBullet = 10.0f/value;
         modReload = value;
-        Debug.Log(modSpeed + " " + modReload);
     }
 
 }
