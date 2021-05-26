@@ -14,24 +14,12 @@ using UnityEngine;
 
 public class ScaleWithScreen : MonoBehaviour
 {
-    public static float GetScreenToWorldHeight
+    // Start is called before the first frame update
+    void Start()
     {
-        get
-        {
-            Vector2 topRightCorner = new Vector2(1, 1);
-            Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
-            var height = edgeVector.y * 2;
-            return height;
-        }
-    }
-    public static float GetScreenToWorldWidth
-    {
-        get
-        {
-            Vector2 topRightCorner = new Vector2(1, 1);
-            Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
-            var width = edgeVector.x * 2;
-            return width;
-        }
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        float wsh = Camera.main.orthographicSize * 2;
+        float wsw = wsh / Screen.height * Screen.width;
+        transform.localScale = new Vector3(wsw / sr.sprite.bounds.size.x, wsh / sr.sprite.bounds.size.y, 1);
     }
 }
