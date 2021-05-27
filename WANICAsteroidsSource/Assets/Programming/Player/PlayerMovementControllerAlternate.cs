@@ -58,13 +58,9 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Covers for TotalDistance
     private Vector3 lastPos;
 
-<<<<<<< HEAD
     private float time = 0;
 
     public AudioClip stepSound;
-=======
-
->>>>>>> 16568d4b1af0c5e24a3f94ea1823bef3a5bb1767
 
     // Start is called before the first frame update
     void Start()
