@@ -261,7 +261,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 4baa96c4cb7db45c1ace5e5b60249b83, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b05778f5c07149d8aa7693a36c46636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -890,18 +890,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6290884503859100505, guid: c56f8ab5b68bcd34dae24a4db359a1a2,
-        type: 3}
-      propertyPath: SpawnedObjectPrefab.Array.data[2]
-      value: 
-      objectReference: {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad,
-        type: 3}
-    - target: {fileID: 6290884503859100505, guid: c56f8ab5b68bcd34dae24a4db359a1a2,
-        type: 3}
-      propertyPath: SpawnedObjectPrefab.Array.data[3]
-      value: 
-      objectReference: {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad,
-        type: 3}
     - target: {fileID: 6290884503859100518, guid: c56f8ab5b68bcd34dae24a4db359a1a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -955,11 +943,6 @@ PrefabInstance:
     - target: {fileID: 6290884503859100518, guid: c56f8ab5b68bcd34dae24a4db359a1a2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6290884503859100519, guid: c56f8ab5b68bcd34dae24a4db359a1a2,
-        type: 3}
-      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
