@@ -169,7 +169,7 @@ public class ObjectSpawnManager : MonoBehaviour
         spawnedObject.transform.localScale = scale;
 
         // Random rotation
-        var rotation = Random.Range(0.0f, 360.0f);
+        var rotation = 0.0f;
         spawnedObject.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         // Random move direction
@@ -228,7 +228,7 @@ public class ObjectSpawnManager : MonoBehaviour
         splitObject.transform.localScale = scale;
 
         // Random rotation
-        var rotation = Random.Range(0.0f, 360.0f);
+        var rotation = 0.0f;
         splitObject.transform.eulerAngles = new Vector3(0, 0, rotation);
 
         //move direction
