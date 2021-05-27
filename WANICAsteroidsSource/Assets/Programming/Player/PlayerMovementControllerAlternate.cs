@@ -57,6 +57,10 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Covers for TotalDistance
     private Vector3 lastPos;
 
+    private float time = 0;
+
+    public AudioClip stepSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,12 +99,14 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             //animator.SetInteger("state", 0);
         }
 
+        bool moving = false;
         // Input
         if (Input.GetKey(MoveUpKey))
         {
             spriteNum = 0;
             moveDirection.y += moveSpeed;
             animator.SetInteger("state", 2);
+            moving = true;
         }
             
 
@@ -109,6 +115,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             spriteNum = 1;
             moveDirection.y -= moveSpeed;
             animator.SetInteger("state", 1);
+            moving = true;
         }
 
         if (Input.GetKey(MoveRightKey))
@@ -116,6 +123,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             spriteNum = 2;
             moveDirection.x += moveSpeed;
             animator.SetInteger("state", 2);
+            moving = true;
         }
 
         if (Input.GetKey(MoveLeftKey))
@@ -123,20 +131,26 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
             spriteNum = 3;
             moveDirection.x -= moveSpeed;
             animator.SetInteger("state", 1);
+            moving = true;
         }
 
         // Movement
         mRigidbody.velocity = moveDirection.normalized * MoveSpeedMax;
 
-        // Sound
-        bool moving = false;
-        if (moveDirection != Vector2.zero)
-            moving = true;
-
-        if (moving && !mAudioSource.isPlaying)
+        /*if (moving && !mAudioSource.isPlaying)
             mAudioSource.Play();
         else
-            mAudioSource.Stop();
+            mAudioSource.Stop();*/
+        
+        if(moving)
+        {
+            time += Time.deltaTime;
+            if(time >= 0.5f)
+            {
+                mAudioSource.Play();
+                time = 0;
+            }
+        }
     }
 
     private void Rotate()
