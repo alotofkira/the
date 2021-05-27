@@ -81,7 +81,6 @@ public class ObjectSpawnManager : MonoBehaviour
 
         if(numAsteroids == 0)
         {
-           
             SpawnNextWave();
         }
     }
@@ -157,8 +156,10 @@ public class ObjectSpawnManager : MonoBehaviour
 
     public void SpawnAtSetPosition(Vector3 position, Vector3 scale)
     {
+        GameObject Player = GameObject.Find("PlayerShip");
+
         /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
-        SpawnedObjectPrefabIndex = Random.Range(0, SpawnedObjectPrefab.Length); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
+        SpawnedObjectPrefabIndex = Random.Range(0, 4); // currently, this sets the type of prefab for e v e r y o b j e c t in a wave
 
         // Create object
         var spawnedObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
@@ -179,19 +180,27 @@ public class ObjectSpawnManager : MonoBehaviour
         var speed = 0.0f; 
         switch (SpawnedObjectPrefabIndex)
         {
+            //base
             case 0:
                 speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
                 spawnedObject.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
                 break;
+
+            //speed
             case 1:
                 speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed); // added case for special slime, twice as fast
                 spawnedObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
                 break;
+
+            //follow
             case 2:
-                speed = Random.Range(MinObjectSpeed, MaxObjectSpeed); // base case
-                direction = (PlayerMovementControllerAlternate.playerPos - transform.position).normalized;
+                speed = Random.Range(0.1f * MinObjectSpeed, 0.1f * MaxObjectSpeed); // base case
+                direction = new Vector3(Player.transform.position.x - spawnedObject.transform.position.x,
+            Player.transform.position.y - spawnedObject.transform.position.y);
                 spawnedObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
                 break;
+
+            //split
             case 3:
                 speed = 0.5f;
                 spawnedObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
@@ -204,10 +213,12 @@ public class ObjectSpawnManager : MonoBehaviour
         body.velocity = direction * speed;
     }
 
-    public void SpawnSplit(Vector3 position, Vector3 scale)
+    public void SpawnSplit(Vector3 position, Vector3 scale, int splittype)
     {
         /*      This could use some form of additions based on type of prefab and some more v a r i e t y    */
         SpawnedObjectPrefabIndex = 1;
+
+        GameObject Player = GameObject.Find("PlayerShip");
 
         // Create object
         var splitObject = Instantiate(SpawnedObjectPrefab[SpawnedObjectPrefabIndex], position, Quaternion.identity);
@@ -220,18 +231,30 @@ public class ObjectSpawnManager : MonoBehaviour
         var rotation = Random.Range(0.0f, 360.0f);
         splitObject.transform.eulerAngles = new Vector3(0, 0, rotation);
 
-        // Random move direction
+        //move direction
         rotation = Random.Range(0.0f, 360.0f * Mathf.Deg2Rad);
         var direction = new Vector3(Mathf.Cos(rotation), Mathf.Sin(rotation), 0);
 
+        switch (splittype)
+        {
+            case 0:
+                direction = new Vector3(Player.transform.position.x - splitObject.transform.position.x,
+            Player.transform.position.y - splitObject.transform.position.y);
+                splitObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 255);
+                break;
+
+            case 1:
+                splitObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
+                break;
+        }
+
         // Random speed
         var speed = Random.Range(2 * MinObjectSpeed, 2 * MaxObjectSpeed);
-        splitObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
 
 
         // Move object
         var body = splitObject.GetComponent<Rigidbody2D>();
-        body.velocity = direction * speed;
+        body.velocity = direction.normalized * speed;
     }
 
     void SpawnNextWave()

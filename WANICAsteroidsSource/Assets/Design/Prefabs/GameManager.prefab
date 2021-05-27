@@ -48,6 +48,8 @@ MonoBehaviour:
   SpawnedObjectPrefab:
   - {fileID: 6046975222712969571, guid: 53da95e33d50ea14aa0ad3f5d395b486, type: 3}
   - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
+  - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
+  - {fileID: 6004167053300997977, guid: 2bd263339750d416bb736cf48cce6fad, type: 3}
   SpawnedObjectPrefabIndex: 0
   MinObjectSpeed: 0.7
   MaxObjectSpeed: 1.5
@@ -66,15 +68,15 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8486183541311818530, guid: 8f5281082f29b51448cdf2287c65c222,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: aef78d88a095f95419ff3161993051a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c6e60144fe67f48b38cc801258bf6526, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 225
   DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500

@@ -8,8 +8,6 @@
 // Copyright © 2021 DigiPen (USA) Corporation.
 //
 //------------------------------------------------------------------------------
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

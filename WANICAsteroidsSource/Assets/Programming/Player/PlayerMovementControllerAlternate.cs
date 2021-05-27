@@ -29,6 +29,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     //sprite renderer & animation that changes based on movement
     public SpriteRenderer spriteRenderer;
     private Animator animator;
+    private KeyCode lastKey;
     //sprites for movement
     public Sprite down;
     public Sprite up;
@@ -57,9 +58,13 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
     // Covers for TotalDistance
     private Vector3 lastPos;
 
+<<<<<<< HEAD
     private float time = 0;
 
     public AudioClip stepSound;
+=======
+
+>>>>>>> 16568d4b1af0c5e24a3f94ea1823bef3a5bb1767
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +87,6 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         HighScoreHolder.totalDistance += Vector3.Distance(lastPos, transform.position);
         lastPos = transform.position;
         moveSpeed = (float)OptionsSliderLogic.modSpeed / 10.0f;
-        Debug.Log("speed + " + moveSpeed);
         Rotate();
         Move();
     }
@@ -103,15 +107,15 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
         // Input
         if (Input.GetKey(MoveUpKey))
         {
+            lastKey = MoveUpKey;
             spriteNum = 0;
             moveDirection.y += moveSpeed;
             animator.SetInteger("state", 2);
             moving = true;
         }
-            
-
         if (Input.GetKey(MoveDownKey))
         {
+            lastKey = MoveDownKey;
             spriteNum = 1;
             moveDirection.y -= moveSpeed;
             animator.SetInteger("state", 1);
@@ -120,6 +124,7 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
 
         if (Input.GetKey(MoveRightKey))
         {
+            lastKey = MoveRightKey;
             spriteNum = 2;
             moveDirection.x += moveSpeed;
             animator.SetInteger("state", 2);
@@ -128,11 +133,27 @@ public class PlayerMovementControllerAlternate : MonoBehaviour
 
         if (Input.GetKey(MoveLeftKey))
         {
+            lastKey = MoveLeftKey;
             spriteNum = 3;
             moveDirection.x -= moveSpeed;
             animator.SetInteger("state", 1);
             moving = true;
         }
+        if (!Input.anyKey) // to check for an end of an state above
+        {
+            switch (lastKey)
+            {
+                case KeyCode.A:
+                case KeyCode.S:
+                    animator.SetInteger("state", 0);
+                    break;
+                case KeyCode.W:
+                case KeyCode.D:
+                    animator.SetInteger("state", 3);
+                    break;
+            }
+        }
+
 
         // Movement
         mRigidbody.velocity = moveDirection.normalized * MoveSpeedMax;

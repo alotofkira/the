@@ -27,9 +27,8 @@ public class RestartOnCollision : MonoBehaviour
     public float EffectScaleMultiplier = 2.0f;
     public Color EffectStartColor = Color.white;
     public float ClipVolumeMultiplier = 0.5f;
-
+    public GameObject gm = null;
     // Components
-    PlayerMovementController movement = null;
     PlayerMovementControllerAlternate alternateMovement = null;
     PlayerShootingController shooting = null;
     Transform mTransform = null;
@@ -44,13 +43,13 @@ public class RestartOnCollision : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        movement = GetComponent<PlayerMovementController>();
         alternateMovement = GetComponent<PlayerMovementControllerAlternate>();
         shooting = GetComponent<PlayerShootingController>();
         mTransform = GetComponent<Transform>();
         mAudioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         sp = GetComponent<SpriteRenderer>();
+        gm = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -58,6 +57,7 @@ public class RestartOnCollision : MonoBehaviour
     {
         if(hasCollided)
         {
+            gm.GetComponent<AudioSource>().enabled = false;
             animator.SetInteger("state", 0);
             sp.color = Color.green;
             alternateMovement.mRigidbody.velocity = Vector2.zero;
@@ -115,10 +115,6 @@ public class RestartOnCollision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hasCollided = true;
-
-        // Disable player controls
-        if (movement != null)
-            movement.enabled = false;
 
         if (alternateMovement != null)
             alternateMovement.enabled = false;
