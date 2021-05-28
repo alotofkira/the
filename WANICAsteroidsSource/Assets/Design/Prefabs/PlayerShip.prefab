@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2070967342736071710}
   - component: {fileID: 2070967342736071706}
   - component: {fileID: 2070967342736071704}
-  - component: {fileID: 2070967342736071685}
   - component: {fileID: 2757521452979052217}
   - component: {fileID: 2070967342736071705}
   - component: {fileID: 7282408519806949340}
@@ -150,11 +149,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5898939725787578259, guid: 8f5281082f29b51448cdf2287c65c222,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: adcf629707eae3a48a70007c615be18f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1f6302db43f92472e82a9de07f46bc4f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 0.667
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -266,27 +265,6 @@ MonoBehaviour:
   ProjectileSpeed: 10
   ShootKey: 32
   AddPlayerMoveSpeed: 1
---- !u!114 &2070967342736071685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070967342736071680}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4225e85214527b04886e5c36a86933b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeedMax: 5
-  RotateSpeed: 360
-  AccelerationAmount: 2
-  DecelerationAmount: 1.5
-  AccelerationEnabled: 0
-  DecelerationEnabled: 0
-  MoveForwardKey: 119
-  TurnRightKey: 100
-  TurnLeftKey: 97
 --- !u!114 &2757521452979052217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,15 +282,19 @@ MonoBehaviour:
   RotationEnabled: 0
   RotateInstantly: 0
   MoveContinuous: 0
+  moveSpeed: 1
   spriteRenderer: {fileID: 2070967342736071681}
   down: {fileID: 21300000, guid: 82e416b91655cf44ead648ceee97fc2c, type: 3}
   up: {fileID: 21300000, guid: 28826aa8d0ac54f068365a333323a3c9, type: 3}
   left: {fileID: 21300000, guid: 28826aa8d0ac54f068365a333323a3c9, type: 3}
   right: {fileID: 21300000, guid: 95070dc43ca7f94478a1d7f8300720bb, type: 3}
+  spriteNum: 1
   MoveUpKey: 119
   MoveDownKey: 115
   MoveRightKey: 100
   MoveLeftKey: 97
+  mRigidbody: {fileID: 0}
+  stepSound: {fileID: 0}
 --- !u!114 &2070967342736071705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +316,7 @@ MonoBehaviour:
   EffectScaleMultiplier: 2
   EffectStartColor: {r: 0.3443396, g: 1, b: 0.4877711, a: 1}
   ClipVolumeMultiplier: 0.5
+  gm: {fileID: 0}
 --- !u!95 &7282408519806949340
 Animator:
   serializedVersion: 3
