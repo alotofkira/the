@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	SpawnObjectsWhenDestroyed.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & CJ Sweatt
 // Project:		Asteroids
 // Course:		WANIC VGP
 //

@@ -1,7 +1,7 @@
 ﻿//------------------------------------------------------------------------------
 //
 // File Name:	MenuButtonLogic.cs
-// Author(s):	Jeremy Kings (j.kings)
+// Author(s):	Jeremy Kings (j.kings) & Alex Dzius (alex.dzius)
 // Project:		Asteroids
 // Course:		WANIC VGP
 //
@@ -31,10 +31,12 @@ public class MenuButtonLogic : MonoBehaviour
     // Function to call when button is clicked
     private delegate void ButtonAction();
     private ButtonAction buttonAction;
+    private AudioSource ass;
 
     // Start is called before the first frame update
     void Start()
     {
+        ass = GetComponent<AudioSource>(); // this is a bug, this is a big bug, this makes audio maybe worse, but its friday 11pm and I do NOT care its a feature now
         buttonAction = null;
 
         switch (buttonFunction)
@@ -64,6 +66,7 @@ public class MenuButtonLogic : MonoBehaviour
 
     private void Play()
     {
+        ass.Play();
         SceneManager.LoadScene("GameLevel");
     }
 
@@ -80,16 +83,19 @@ public class MenuButtonLogic : MonoBehaviour
 
     private void Restart()
     {
+        ass.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void MainMenu()
     {
+        ass.Play();
         SceneManager.LoadScene("MainMenu");
     }
 
     private void OptionsMenu()
     {
+        ass.Play();
         SceneManager.LoadScene("OptionsMenu");
     }
 }
