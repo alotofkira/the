@@ -27,8 +27,10 @@ public class PlayerShootingController : MonoBehaviour
     private Rigidbody2D mRigidbody = null;
     private Vector3 playerPos;
     private Vector3 spawnPos;
-
+    private bool charged = false;
     GameObject player;
+    private AudioSource mAudioSource;
+    public AudioClip chargeSound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class PlayerShootingController : MonoBehaviour
         shootTimer = ShootDelay * OptionsSliderLogic.modReload;
         mTransform = GetComponent<Transform>();
         mRigidbody = GetComponent<Rigidbody2D>();
+        mAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,10 +54,16 @@ public class PlayerShootingController : MonoBehaviour
 
         ProjectileSpeed = 10 * OptionsSliderLogic.modBullet;
         ShootDelay = 0.5f * OptionsSliderLogic.modReload;
+        if(!charged && shootTimer >= ShootDelay)
+        {
+            mAudioSource.PlayOneShot(chargeSound);
+            charged = true;
+        }
         if(Input.GetKeyUp(ShootKey) && shootTimer >= ShootDelay)
         {
             SpawnProjectile();
             shootTimer = 0.0f;
+            charged = false;
         }
 
         shootTimer += Time.deltaTime;

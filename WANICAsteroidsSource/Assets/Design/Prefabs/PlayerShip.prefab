@@ -265,6 +265,7 @@ MonoBehaviour:
   ProjectileSpeed: 10
   ShootKey: 32
   AddPlayerMoveSpeed: 1
+  chargeSound: {fileID: 8300000, guid: ed3ea38a2887de54b8c325e63162d76a, type: 3}
 --- !u!114 &2757521452979052217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +315,7 @@ MonoBehaviour:
   EffectMaxDistance: 1
   EffectInterval: 1
   EffectScaleMultiplier: 2
-  EffectStartColor: {r: 0.3443396, g: 1, b: 0.4877711, a: 1}
+  EffectStartColor: {r: 1, g: 0.01978819, b: 0, a: 1}
   ClipVolumeMultiplier: 0.5
   gm: {fileID: 0}
 --- !u!95 &7282408519806949340
